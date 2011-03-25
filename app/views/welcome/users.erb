@@ -1,0 +1,9 @@
+<% @users.each do |u| %>
+	<% if @user == u%>
+		<b><%= u.username%></b> <br />
+	<% elsif @user.follows.include?(u) %>
+		<%= u.username %>
+	<% else %>
+		<%= link_to u.username, follow_path(u) %><br />
+	<% end%>
+<% end %>

@@ -1,0 +1,17 @@
+<%= form_for @u, :url => login_do_path do |form| %>
+<table>
+	<tr>
+		<td>Username:</td>
+		<td><%= form.text_field :username %></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><%= form.password_field :password %></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2"><%= form.submit "Login" %></td>
+	</tr>
+</table>
+<% end %>
+
+<%= link_to "Register", register_path %>

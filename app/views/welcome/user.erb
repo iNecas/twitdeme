@@ -1,0 +1,8 @@
+<% @u.tweets.each do |tweet| %>
+	<%= tweet.text %>
+	<hr />
+<% end %>
+
+<% if @user and @user != @u and not @user.follows.include?(@u)%>
+	<%= link_to "Follow", follow_path(@u) %>
+<% end %>

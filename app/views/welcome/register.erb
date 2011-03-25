@@ -1,0 +1,24 @@
+<% form_for @u, :url => register_do_path do |form| %>
+<% if @u.errors.any? %>
+  <ul>
+    <% @u.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+<table>
+	<tr>
+		<td>Username:</td>
+		<td><%= form.text_field :username %></td>
+	</tr>
+	<tr>
+		<td>Password</td>
+		<td><%= form.password_field :password %></td>
+	</tr>
+	<tr>
+		<td align="center" colspan="2"><%= form.submit "Register" %></td>
+	</tr>
+</table>
+<% end %>
+
+<%= link_to "Login", login_path %>
