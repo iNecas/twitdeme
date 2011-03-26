@@ -12,8 +12,10 @@ class WelcomeController < ApplicationController
     @user = User.where(params[:user]).first
     if @user
       session[:user] = @user.id
+      flash[:notice] = "Welcome to twitterific"
       redirect_to root_path
     else
+      flash[:error] = "Wrong username or password"
       redirect_to login_path
     end
   end
