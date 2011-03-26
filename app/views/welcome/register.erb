@@ -7,14 +7,18 @@
   </ul>
 <% end %>
 <table>
-	<tr>
-		<td>Username:</td>
-		<td><%= form.text_field :username %></td>
-	</tr>
-	<tr>
-		<td>Password</td>
-		<td><%= form.password_field :password %></td>
-	</tr>
+  <tr>
+    <td><label for="user_username">Username:</label></td>
+    <td><%= form.text_field :username %></td>
+  </tr>
+  <tr>
+    <td><label for="user_password">Password</label></td>
+    <td><%= form.password_field :password %></td>
+  </tr>
+  <tr>
+    <td><label for="user_password_confirmation">Password Again</label></td>
+    <td><%= form.password_field :password_confirmation %></td>
+  </tr>
 	<tr>
 		<td align="center" colspan="2"><%= form.submit "Register" %></td>
 	</tr>

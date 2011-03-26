@@ -9,8 +9,8 @@ class WelcomeController < ApplicationController
   end
   
   def login_do
-    @user = User.where(params[:user]).first
-    if @user
+    @user = User.where(params[:user].slice(:user_name)).first
+    if @user && @user.password_match?(params[:user][:password])
       session[:user] = @user.id
       flash[:notice] = "Welcome to twitterific"
       redirect_to root_path
@@ -35,6 +35,7 @@ class WelcomeController < ApplicationController
     if @user.save
       session[:user] = @user.id
       session[:new_user] = nil
+      flash[:notice] = "You have been registered successfully"
       redirect_to root_path
     else
       session[:new_user] = @user
