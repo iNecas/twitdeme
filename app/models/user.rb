@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
   
   validates :username, :presence => true, :uniqueness => true
   validates :password, :length => { :minimum => 5 }, :confirmation => true
-  
+
+
   attr_accessor :password, :password_confirmation
-  
   before_save :encrypt_password
   
   def password_match?(password)
@@ -38,12 +38,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def salt_and_password_to_hash(salt, password)
-    encrypt("#{salt}#{password}")
-  end
-
   def generate_salt
     encrypt("#{Time.now.to_s}#{self.username}")
+  end
+
+  def salt_and_password_to_hash(salt, password)
+    encrypt("#{salt}#{password}")
   end
 
   def encrypt(string)

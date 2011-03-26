@@ -25,24 +25,6 @@ class WelcomeController < ApplicationController
     redirect_to root_path
   end
   
-  def register
-    @u = session[:new_user]
-    @u ||= User.new
-  end
-  
-  def register_do
-    @user = User.new(params[:user])
-    if @user.save
-      session[:user] = @user.id
-      session[:new_user] = nil
-      flash[:notice] = "You have been registered successfully"
-      redirect_to root_path
-    else
-      session[:new_user] = @user
-      redirect_to register_path
-    end
-  end
-  
   def user
     @u = User.where(:username => params[:user]).first
   end

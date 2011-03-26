@@ -4,9 +4,10 @@ Twitterific::Application.routes.draw do
   post '/login', :to => "welcome#login_do", :as => "login_do"
   
   get '/logout', :to => "welcome#logout", :as => "logout"
+  
+  resource :users
 
-  get '/register', :to => "welcome#register", :as => "register"
-  post '/register', :to => "welcome#register_do", :as => "register_do"
+  get '/register', :to => "users#new", :as => "register"
   
   get '/follow/:user', :to => "welcome#follow", :as => "follow"
 
@@ -15,6 +16,7 @@ Twitterific::Application.routes.draw do
   get '/users', :to => "welcome#users", :as => "users"
 
   get '/:user', :to => "welcome#user", :as => "user"
+  
     
   root :to => "welcome#index"
   
