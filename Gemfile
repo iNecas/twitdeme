@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'activerecord-jdbcmysql-adapter'
+gem "activerecord-jdbcmysql-adapter", :require =>'arjdbc' if defined?(JRUBY_VERSION)
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,3 +29,12 @@ gem 'activerecord-jdbcmysql-adapter'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+group :test do
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+end
